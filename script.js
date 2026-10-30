@@ -1,4 +1,6 @@
 const LEAD_ENDPOINT = 'https://lead-relay.leestygpt.workers.dev/lead/39MNLQBHB6';
+// Ссылка на Telegram-бота с гайдом «7 ошибок в таргетинге». Пока бота нет, кнопки ведут в личный чат с готовым текстом.
+const GUIDE_URL = 'https://t.me/evgenmusl?text=' + encodeURIComponent('Здравствуйте! Хочу гайд «7 ошибок в таргетинге»');
 
 (() => {
   const $ = (s, c = document) => c.querySelector(s);
@@ -8,6 +10,8 @@ const LEAD_ENDPOINT = 'https://lead-relay.leestygpt.workers.dev/lead/39MNLQBHB6'
 
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  $$('.js-guide').forEach(a => { a.href = GUIDE_URL; a.target = '_blank'; a.rel = 'noopener'; });
 
   // ===== Меню =====
   const burger = $('#burger');
@@ -276,7 +280,7 @@ const LEAD_ENDPOINT = 'https://lead-relay.leestygpt.workers.dev/lead/39MNLQBHB6'
   // ===== Появление частей секций =====
   const targets = $$([
     '.hero__body > *', '.hero__who', '.price .head', '.body-lead', '.group', '.item', '.sum',
-    '.how .head', '.cases__h', '.cases__lead', '.ledger tbody tr', '.proof figure', '.cases__note',
+    '.how .head', '.fit .head', '.fit__list li', '.story__item', '.guide .head', '.guide__col > *', '.cases__h', '.cases__lead', '.ledger tbody tr', '.proof figure', '.cases__note',
     '.about .head', '.letter > *', '.faq .head', '.facts', '.qa__item', '.faq__end',
     '.contact__h', '.contact__col form', '.contact__links li',
   ].join(','));

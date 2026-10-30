@@ -74,6 +74,8 @@ ul, ol { padding: 0; list-style: none; }
 .btn:active { transform: translateY(0) scale(0.98); }
 .btn[disabled] { opacity: .6; cursor: default; transform: none; }
 .btn--small { padding: 10px 20px; }
+.btn--ghost { background: var(--field); color: var(--ink); }
+.btn--ghost:hover { background: var(--pick); color: var(--ink); }
 .btn--block { width: 100%; }
 
 /* ----- шапка ----- */
@@ -133,14 +135,18 @@ ul, ol { padding: 0; list-style: none; }
 .hero { min-height: calc(100svh - var(--header-h)); display: flex; flex-direction: column; justify-content: space-between; gap: 48px; padding-block: 56px 40px; }
 .hero__body { display: flex; flex-direction: column; gap: 32px; padding-top: clamp(8px, 6vh, 72px); }
 .hero__body .display { text-wrap: balance; }
-.hero__lead { max-width: 28ch; }
+.hero__lead { max-width: 34ch; }
+.hero__note { max-width: 40ch; margin-top: -12px; }
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
 .hero__who { display: flex; align-items: center; gap: 16px; }
 .hero__who p { max-width: 34rem; color: var(--muted); }
 .avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
 
 /* ----- цены ----- */
-.price, .how { padding-block: var(--gap-section) 0; }
+.fit, .price, .how { padding-block: var(--gap-section) 0; }
+.fit .head { margin-bottom: 32px; }
+.fit__list { display: grid; gap: 20px; }
+.fit__list li { font-size: var(--s-lead); line-height: 1.35; max-width: 30ch; }
 .price .head, .how .head { margin-bottom: 28px; }
 .body-lead { margin-bottom: 56px; max-width: 34rem; }
 .group { font-family: var(--text); font-weight: 500; font-size: var(--s-lead); line-height: 1.2; margin: 56px 0 16px; }
@@ -160,6 +166,9 @@ ul, ol { padding: 0; list-style: none; }
 .item__price { font-size: var(--s-lead); line-height: 1.2; font-weight: 500; text-align: right; white-space: nowrap; }
 .item__text { grid-column: 2; color: var(--muted); max-width: 36ch; }
 .item--static .item__text { grid-column: 1; max-width: 40ch; }
+.item__list { grid-column: 1 / -1; display: grid; gap: 8px; margin-top: 14px; max-width: 40ch; }
+.item__list li { position: relative; padding-left: 20px; color: var(--ink); }
+.item__list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px; background: var(--accent); }
 
 .sum { margin: 24px 0 0; padding: 24px; background: var(--field); display: grid; gap: 6px; }
 .sum__main { font-size: var(--s-lead); line-height: 1.25; font-weight: 500; }
@@ -181,6 +190,11 @@ ul, ol { padding: 0; list-style: none; }
 .cases__inner { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 56px; align-items: start; }
 .cases__h { grid-column: 1 / 8; }
 .cases__lead { grid-column: 8 / 13; align-self: end; max-width: 28ch; }
+.story { grid-column: 1 / 13; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px 48px; }
+.story__item { display: grid; gap: 12px; align-content: start; }
+.story__item h3 { font-family: var(--display); font-weight: 600; font-size: var(--s-lead); line-height: 1.1; margin-bottom: 4px; }
+.story__item p { max-width: 40ch; }
+.story__item b { font-weight: 500; }
 .ledger { grid-column: 1 / 8; width: 100%; border-collapse: collapse; }
 .ledger thead th { text-align: left; font-weight: 400; font-size: var(--s-small); color: var(--muted); padding: 0 16px 12px; }
 .ledger thead th:last-child { text-align: right; }
@@ -190,12 +204,20 @@ ul, ol { padding: 0; list-style: none; }
 .ledger tbody td { font-weight: 400; }
 .ledger .num { text-align: right; font-weight: 500; font-size: var(--s-lead); line-height: 1.2; white-space: nowrap; }
 .ledger .num--none { color: var(--muted); font-weight: 400; }
+.ledger .num small { display: block; font-size: var(--s-small); font-weight: 400; color: var(--muted); line-height: 1.3; }
 .proof { grid-column: 8 / 13; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .proof figure { display: grid; gap: 8px; align-content: start; }
 .proof img { width: 100%; height: auto; background: var(--paper); }
 .proof figcaption { font-size: var(--s-small); color: var(--muted); }
 .proof__c { grid-column: 1 / -1; }
 .cases__note { grid-column: 1 / 13; max-width: 60ch; }
+
+/* ----- гайд ----- */
+.guide { padding-block: var(--gap-section) 0; }
+.guide__inner { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 32px; align-items: start; }
+.guide__inner .head { grid-column: 1 / 8; }
+.guide__col { grid-column: 8 / 13; display: grid; gap: 28px; justify-items: start; }
+.guide__col .lead { max-width: 28ch; }
 
 /* ----- обо мне ----- */
 .about, .faq { padding-block: var(--gap-section) 0; }
@@ -215,7 +237,7 @@ ul, ol { padding: 0; list-style: none; }
 .qa__item[open] summary::before { transform: translateX(-5px) rotate(-45deg); }
 .qa__item[open] summary::after { transform: translateX(3px) rotate(45deg); }
 .qa__item p { margin-top: 10px; color: var(--muted); max-width: 36rem; }
-.faq__end { margin-top: 56px; padding-bottom: var(--gap-section); }
+.faq__end { margin-top: 56px; padding-bottom: var(--gap-section); display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
 .letter__photo, .faq__cert { display: none; }
 
 /* ----- связь ----- */
@@ -283,7 +305,11 @@ ul, ol { padding: 0; list-style: none; }
   .step { min-height: 0; padding-block: 40px 0; color: var(--ink); }
   .step p { max-width: 34ch; }
   .steps { gap: 24px; }
-  .cases__h, .cases__lead, .ledger, .proof, .cases__note { grid-column: 1 / -1; }
+  .cases__h, .cases__lead, .story, .ledger, .proof, .cases__note { grid-column: 1 / -1; }
+  .story { grid-template-columns: 1fr; gap: 48px; }
+  .guide__inner .head, .guide__col { grid-column: 1 / -1; }
+  .guide { padding-inline: 0; }
+  .fit, .price, .how { padding-top: 96px; }
   .cases__lead { align-self: start; }
   .contact__h, .contact__col, .contact__col form, .contact__links { grid-column: 1 / -1; }
   .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -293,7 +319,7 @@ ul, ol { padding: 0; list-style: none; }
   .ledger tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; padding: 16px; }
   .ledger tbody th, .ledger tbody td { padding: 0; display: block; }
   .ledger tbody td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
-  .ledger .num { grid-column: 2; grid-row: 1; }
+  .ledger .num { grid-column: 2; grid-row: 1; text-align: right; }
 }
 @media (max-width: 560px) {
   .btn--small { display: none; }

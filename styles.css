@@ -196,6 +196,7 @@ ul, ol { padding: 0; list-style: none; }
 .story__item p { max-width: 40ch; }
 .story__item b { font-weight: 500; }
 .ledger { grid-column: 1 / 8; width: 100%; border-collapse: collapse; }
+.ledger__cap { text-align: left; font-family: var(--display); font-weight: 600; font-size: var(--s-lead); line-height: 1.1; padding: 0 16px 20px; }
 .ledger thead th { text-align: left; font-weight: 400; font-size: var(--s-small); color: var(--muted); padding: 0 16px 12px; }
 .ledger thead th:last-child { text-align: right; }
 .ledger tbody tr:nth-child(odd) { background: var(--row); }
@@ -257,6 +258,8 @@ ul, ol { padding: 0; list-style: none; }
 .hp { position: absolute; left: 0; top: 0; width: 2px; height: 2px; opacity: 0; pointer-events: none; }
 .contact__col form { position: relative; }
 .form__status { min-height: 1.5em; font-weight: 500; }
+.consent { display: flex; gap: 12px; align-items: flex-start; font-size: var(--s-small); line-height: 1.5; color: var(--muted); cursor: pointer; }
+.consent input { width: 22px; height: 22px; margin: 0; flex-shrink: 0; accent-color: var(--accent); }
 .form__note { font-size: var(--s-small); color: var(--muted); max-width: 44ch; }
 
 /* ----- подвал ----- */

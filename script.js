@@ -252,6 +252,11 @@ const GUIDE_URL = 'https://t.me/evgenmusl?text=' + encodeURIComponent('Здра�
     const payload = {};
     new FormData(form).forEach((v, k) => { payload[k] = String(v).trim(); });
     if (payload._gotcha) return;
+    if (!form.elements.consent?.checked) {
+      status.textContent = 'Отметьте согласие на обработку персональных данных.';
+      return;
+    }
+    delete payload.consent;
     if (!payload.name || !payload.contact) {
       status.textContent = 'Укажите имя и телефон или Telegram.';
       return;
